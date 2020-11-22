@@ -1,4 +1,4 @@
-# Projeto-de-Banco-de-Dados-
+## Projeto-de-Banco-de-Dados-
 
 Trabalho desenvolvido para a disciplina de Banco de Dados da Universidade de Brasília no 1/2020.
 
@@ -8,7 +8,7 @@ O modelo que será desenvolvido tem como objetivo colher informações rápidas 
 
 Os dados utilizados alguns são referentes aos dados reais que estão disponíveis no dados.gov.br e outros serão criados apenas para demonstração da aplicação.Esses dados que serão substituidos podem ser alterados para dados reais posteriormente.
 
-Participantes do Projeto:
+### Participantes do Projeto:
 
 |Projeto Banco de Dados|  |
 |--|--|
