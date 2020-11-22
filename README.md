@@ -22,6 +22,6 @@ Os dados utilizados alguns são referentes aos dados reais que estão disponíve
 ### Modelagem de Dados
 
 - MySQL Workbench
-### Linguagem de programação
+### Linguagem de Programação
 
 - Structured Query Language
