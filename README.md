@@ -8,7 +8,7 @@ O modelo que será desenvolvido tem como objetivo colher informações rápidas 
 
 Os dados utilizados alguns são referentes aos dados reais que estão disponíveis no dados.gov.br e outros serão criados apenas para demonstração da aplicação.Esses dados que serão substituidos podem ser alterados para dados reais posteriormente.
 
-### Participantes do Projeto:
+### Participantes do Projeto 
 
 |Projeto Banco de Dados|  |
 |--|--|
@@ -17,8 +17,11 @@ Os dados utilizados alguns são referentes aos dados reais que estão disponíve
 
 
 ### SGBD 
+
 - MySQL Sever 
 ### Modelagem de Dados
+
 - MySQL Workbench
 ### Linguagem de programação
+
 - Structured Query Language
