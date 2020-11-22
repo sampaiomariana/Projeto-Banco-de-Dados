@@ -14,3 +14,9 @@ Participantes do Projeto:
 |--|--|
 | Guilherme Bertoldo Guerra|  |
 | Mariana Borges de Sampaio|  |
+
+
+### SGBD 
+- MySQL Sever 
+### Modelagem de Dados
+- MySQL Workbench
