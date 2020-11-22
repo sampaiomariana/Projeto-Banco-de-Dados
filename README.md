@@ -8,3 +8,9 @@ O modelo que será desenvolvido tem como objetivo colher informações rápidas 
 
 Os dados utilizados alguns são referentes aos dados reais que estão disponíveis no dados.gov.br e outros serão criados apenas para demonstração da aplicação.Esses dados que serão substituidos podem ser alterados para dados reais posteriormente.
 
+Participantes do Projeto:
+
+|Projeto Banco de Dados|  |
+|--|--|
+| Guilherme Bertoldo Guerra|  |
+| Mariana Borges de Sampaio|  |
