@@ -20,3 +20,5 @@ Os dados utilizados alguns são referentes aos dados reais que estão disponíve
 - MySQL Sever 
 ### Modelagem de Dados
 - MySQL Workbench
+### Linguagem de programação
+- Structured Query Language
