@@ -23,3 +23,4 @@ O modelo que será desenvolvido tem como objetivo colher informações rápidas 
 ### Linguagem de Programação
 
 - Structured Query Language
+- Java 
