@@ -10,8 +10,8 @@ O modelo que será desenvolvido tem como objetivo colher informações rápidas 
 
 |Projeto Banco de Dados|  |
 |--|--|
-| Guilherme Bertoldo Guerra|  |
-| Mariana Borges de Sampaio|  |
+| Guilherme Bertoldo Guerra|  160029392 |
+| Mariana Borges de Sampaio|  180046926 |
 
 
 ### SGBD 
