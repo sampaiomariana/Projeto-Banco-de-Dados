@@ -27,8 +27,7 @@ public class lote {
         
     }
     
-    
-    
+   
     public int getIdLote() {
         return IdLote;
     }
