@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author sampa
+ * @author sampaio
  */
 public class ConnectionFactory {
     
