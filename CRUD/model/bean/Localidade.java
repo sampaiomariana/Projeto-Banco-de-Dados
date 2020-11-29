@@ -11,7 +11,7 @@ package model.bean;
  */
 public class Localidade {
     
-    private int CNPJ;
+    private String CNPJ;
     private String NomedaInstituicao;
     private String Email;
     private String CEP;
@@ -20,7 +20,7 @@ public class Localidade {
     public Localidade (){
     }
     
-    public Localidade ( int CNPJ, String NomedaInstituicao, String Email, String CEP, int Numero ){
+    public Localidade ( String CNPJ, String NomedaInstituicao, String Email, String CEP, int Numero ){
         
         this.CNPJ = CNPJ;
         this.NomedaInstituicao = NomedaInstituicao ;
@@ -29,11 +29,11 @@ public class Localidade {
         this.Numero = Numero; 
     }
     
-    public int getCNPJ() {
+    public String getCNPJ() {
         return CNPJ;
     }
 
-    public void setCNPJ(int CNPJ) {
+    public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
     }
 

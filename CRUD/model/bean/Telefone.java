@@ -11,23 +11,23 @@ package model.bean;
  */
 public class Telefone {
     
- private Localidade CNPJ;
+ private Localidade localidade;
  private String NumeroTelefone;
 
     public Telefone (){
     }
     
-    public Telefone (Localidade CNPJ, String NumeroTelefone){
-        this.CNPJ = CNPJ;
+    public Telefone (Localidade localidade, String NumeroTelefone){
+        this.localidade = localidade;
         this.NumeroTelefone = NumeroTelefone;
     }
-    
-    public Localidade getCNPJ() {
-        return CNPJ;
+
+    public Localidade getLocalidade() {
+        return localidade;
     }
 
-    public void setCNPJ(Localidade CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setLocalidade(Localidade localidade) {
+        this.localidade = localidade;
     }
 
     public String getNumeroTelefone() {
@@ -37,7 +37,6 @@ public class Telefone {
     public void setNumeroTelefone(String NumeroTelefone) {
         this.NumeroTelefone = NumeroTelefone;
     }
-
-        
+    
     
 }

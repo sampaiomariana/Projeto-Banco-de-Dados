@@ -5,40 +5,41 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.Pesquisa;
+
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class PesquisaDAO {
     
-    private Connection conexao =  null;
-    
-    public DestinoDAO(){
+     
+    private Connection conexao = null;
+   
+    public PesquisaDAO (){
         conexao = ConnectionFactory.getConnection();
+        
     }
     
-    public boolean create (Destino destino){
+     public boolean create (Pesquisa pesquisa){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO pesquisa (NumerodeVoluntarios,TaxadeEficacia,DatadeInicio,DatadeTermino,Pesquisador,CNPJ) VALUES (?,?,?,?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
+            stmt.setInt(1, pesquisa.getNumerodeVoluntarios());
+            stmt.setFloat(2, pesquisa.getTaxadeEficacia());
+            stmt.setDate(3, (Date) pesquisa.getDatadeInicio());
+            stmt.setDate(4, (Date) pesquisa.getDatadeTermino());
+            stmt.setInt(5, pesquisa.getPesquisador().getCadastroPesquisador());
+            stmt.setString(6, pesquisa.getLocalidade().getCNPJ());
             
             stmt.executeUpdate();
             return true;
@@ -51,5 +52,9 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
+    
+    
+    
     
 }

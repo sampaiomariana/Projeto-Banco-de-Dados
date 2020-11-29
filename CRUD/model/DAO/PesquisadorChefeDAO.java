@@ -5,40 +5,39 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.PesquisadorChefe;
+
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class PesquisadorChefeDAO {
+ 
     
-    private Connection conexao =  null;
+    private Connection conexao = null;
     
-    public DestinoDAO(){
+    
+    public PesquisadorChefeDAO (){
         conexao = ConnectionFactory.getConnection();
+        
     }
     
-    public boolean create (Destino destino){
+    
+     public boolean create (PesquisadorChefe pesquisador){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO pesquisador (Nome,Especialidade,Email) VALUES (?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
+            stmt.setString(1, pesquisador.getNome());
+            stmt.setString(2, pesquisador.getEspecialidade());
+            stmt.setString(3, pesquisador.getEmail());
             
             stmt.executeUpdate();
             return true;
@@ -51,5 +50,8 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
+    
+    
     
 }

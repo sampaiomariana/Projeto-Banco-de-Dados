@@ -11,33 +11,31 @@ package model.bean;
  */
 public class Itemhaspesquisa {
     
-    private Item IdItem;
-    private Pesquisa IdPesquisa;
+    private Item item;
+    private Pesquisa pesquisa;
     
     public Itemhaspesquisa (){
     }
 
-    public Itemhaspesquisa ( Item IdItem, Pesquisa IdPesquisa){
-        this.IdItem = IdItem ;
-        this.IdPesquisa = IdPesquisa ; 
+    public Itemhaspesquisa ( Item item, Pesquisa pesquisa){
+        this.item = item ;
+        this.pesquisa = pesquisa ; 
     }
 
-    public Item getIdItem() {
-        return IdItem;
+    public Item getItem() {
+        return item;
     }
 
-    public void setIdItem(Item IdItem) {
-        this.IdItem = IdItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public Pesquisa getIdPesquisa() {
-        return IdPesquisa;
+    public Pesquisa getPesquisa() {
+        return pesquisa;
     }
 
-    public void setIdPesquisa(Pesquisa IdPesquisa) {
-        this.IdPesquisa = IdPesquisa;
+    public void setPesquisa(Pesquisa pesquisa) {
+        this.pesquisa = pesquisa;
     }
-    
-    
 
 }

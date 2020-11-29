@@ -11,27 +11,29 @@ package model.bean;
  */
 public class HistoricodeConsumo {
     
-   private Destino CNPJ;
+   private Destino destino;
    private Item IdItem;
    private int Mes;
+   private int QuantidadeMensal;
    
    public HistoricodeConsumo (){
    }
    
    
-   public HistoricodeConsumo (Destino CNPJ, Item IdItem, int Mes){
+   public HistoricodeConsumo (Destino destino, Item IdItem, int Mes, int QuantidadeMensal){
        
-       this.CNPJ = CNPJ;
+       this.destino = destino;
        this.IdItem = IdItem;
        this.Mes = Mes;
+       this.QuantidadeMensal = QuantidadeMensal;
    }
-   
-    public Destino getCNPJ() {
-        return CNPJ;
+
+    public Destino getDestino() {
+        return destino;
     }
 
-    public void setCNPJ(Destino CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setDestino(Destino destino) {
+        this.destino = destino;
     }
 
     public Item getIdItem() {
@@ -49,6 +51,15 @@ public class HistoricodeConsumo {
     public void setMes(int Mes) {
         this.Mes = Mes;
     }
+
+    public int getQuantidadeMensal() {
+        return QuantidadeMensal;
+    }
+
+    public void setQuantidadeMensal(int QuantidadeMensal) {
+        this.QuantidadeMensal = QuantidadeMensal;
+    }
+    
+    
    
-     
 }

@@ -5,41 +5,40 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.Casoscovid;
+
+
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class CasosCovidDAO {
     
-    private Connection conexao =  null;
-    
-    public DestinoDAO(){
+     private Connection conexao = null;
+     
+     
+    public   CasosCovidDAO (){
         conexao = ConnectionFactory.getConnection();
+        
     }
     
-    public boolean create (Destino destino){
+    
+     public boolean create (Casoscovid CasosCovid){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO CasosCovid (CNPJ, QuantidadedeInternados, QuantidadedeCurados, QuantidadedeMortes) VALUES (?,?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
-            
+            stmt.setString(1, CasosCovid.getDestino().getCNPJ());
+            stmt.setInt(2, CasosCovid.getQuantidadedeInternados());
+            stmt.setInt(3, CasosCovid.getQuantidadedeCurados());
+            stmt.setInt(3, CasosCovid.getQuantidadedeMortes());
             stmt.executeUpdate();
             return true;
             
@@ -51,5 +50,10 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
     
+    
+    
+ 
+
 }

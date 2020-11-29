@@ -18,21 +18,22 @@ public class Financiamento {
     private String PublicoouPrivado;
     private int Valor;
     private Date DatadeFinanciamento;
-    private Pesquisa IdPesquisa;
+    private Pesquisa pesquisa;
 
     public Financiamento (){
     }
     
-    public Financiamento (String CPFouCNPJ, String PublicoouPrivado,int Valor, Date DatadeFinanciamento
+    public Financiamento (String CPFouCNPJ, String PublicoouPrivado,int Valor, Date DatadeFinanciamento, Pesquisa pesquisa
             ){
         
         this.CPFouCNPJ = CPFouCNPJ;
         this.PublicoouPrivado = PublicoouPrivado;
         this.Valor = Valor;
         this.DatadeFinanciamento = DatadeFinanciamento;
+        this.pesquisa = pesquisa;
 
     }
-    
+
     public int getIdFinanciamento() {
         return IdFinanciamento;
     }
@@ -73,12 +74,12 @@ public class Financiamento {
         this.DatadeFinanciamento = DatadeFinanciamento;
     }
 
-    public Pesquisa getIdPesquisa() {
-        return IdPesquisa;
+    public Pesquisa getPesquisa() {
+        return pesquisa;
     }
 
-    public void setIdPesquisa(Pesquisa IdPesquisa) {
-        this.IdPesquisa = IdPesquisa;
+    public void setPesquisa(Pesquisa pesquisa) {
+        this.pesquisa = pesquisa;
     }
     
     

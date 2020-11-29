@@ -32,7 +32,7 @@ public class ItemDAO {
 */
     public boolean create (Item item ){
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO item (Nome) VALUES  (?)";
+        String sql = "INSERT INTO item (Nome, Tipodeitem,Producaohistorica, Producaodoultimomes) VALUES  (?,?,?,?)";
        
         
         try {

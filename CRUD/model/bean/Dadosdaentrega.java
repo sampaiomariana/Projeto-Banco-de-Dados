@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Dadosdaentrega {
     private lote IdLote;
-    private lote StatusLote;
+    private String StatusLote;
     private Date DatadeSolicitacao;
     private Date DatadeEntegra;
 
@@ -21,14 +21,13 @@ public class Dadosdaentrega {
     public Dadosdaentrega(){
     }
     
-    public Dadosdaentrega( lote IdLote, lote StatusLote, Date DatadeSolicitacao, Date DatadeEntrega){
+    public Dadosdaentrega( lote IdLote, String StatusLote, Date DatadeSolicitacao, Date DatadeEntrega){
         this.IdLote = IdLote;
         this.StatusLote = StatusLote;
         this.DatadeSolicitacao = DatadeSolicitacao;
         this.DatadeEntegra = DatadeEntrega;
     }
-    
-    
+
     public lote getIdLote() {
         return IdLote;
     }
@@ -37,11 +36,11 @@ public class Dadosdaentrega {
         this.IdLote = IdLote;
     }
 
-    public lote getStatusLote() {
+    public String getStatusLote() {
         return StatusLote;
     }
 
-    public void setStatusLote(lote StatusLote) {
+    public void setStatusLote(String StatusLote) {
         this.StatusLote = StatusLote;
     }
 
@@ -60,6 +59,7 @@ public class Dadosdaentrega {
     public void setDatadeEntegra(Date DatadeEntegra) {
         this.DatadeEntegra = DatadeEntegra;
     }
+    
     
     
 }

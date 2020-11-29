@@ -5,40 +5,44 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.Dadosdaentrega;
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class DadosdaentregaDAO {
     
-    private Connection conexao =  null;
+    private Connection conexao = null;
     
-    public DestinoDAO(){
+    public DadosdaentregaDAO  (){
         conexao = ConnectionFactory.getConnection();
+        
     }
+
+/**
+ * O parâmetro que é inserido na função corresponde ao mesmo que foi declarado na função model.bean
+ * 
+ */
+
     
-    public boolean create (Destino destino){
+    
+     public boolean create (Dadosdaentrega DadosdaEntrega){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO DadosdaEntrega (StatusLote, DatadeSolicitacao, DatadeEntrega) VALUES (?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
+            stmt.setString(1, DadosdaEntrega.getStatusLote());
+            stmt.setDate(2, (Date) DadosdaEntrega.getDatadeSolicitacao());
+            stmt.setDate(2, (Date) DadosdaEntrega.getDatadeEntegra());
+            
             
             stmt.executeUpdate();
             return true;
@@ -51,5 +55,8 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
+    
+    
     
 }

@@ -14,20 +14,19 @@ public class lote {
     private int IdLote;
     private String Fornecedor;
     private  float Valor;
-    private Destino CNPJ;
+    private Destino destino;
 
     public lote() {
     }
     
-    public lote(String Fornecedor, float Valor, Destino CNPJ) {
+    public lote(String Fornecedor, float Valor, Destino destino) {
         
         this.Fornecedor = Fornecedor;
         this.Valor = Valor;
-        this.CNPJ = CNPJ;
+        this.destino = destino;
         
     }
-    
-   
+
     public int getIdLote() {
         return IdLote;
     }
@@ -52,12 +51,15 @@ public class lote {
         this.Valor = Valor;
     }
 
-    public Destino getCNPJ() {
-        return CNPJ;
+    public Destino getDestino() {
+        return destino;
     }
 
-    public void setCNPJ(Destino CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setDestino(Destino destino) {
+        this.destino = destino;
     }
+    
+    
+    
     
 }

@@ -5,40 +5,39 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.Localidade;
+
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class LocalidadeDAO {
     
-    private Connection conexao =  null;
+    private Connection conexao = null;
     
-    public DestinoDAO(){
+    public LocalidadeDAO (){
         conexao = ConnectionFactory.getConnection();
+        
     }
     
-    public boolean create (Destino destino){
+     public boolean create (Localidade localidade){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO localidade (CNPJ, NomedaInstituicao,Email,CEP,Numero) VALUES (?,?,?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
+            stmt.setString(1, localidade.getCNPJ());
+            stmt.setString(2, localidade.getNomedaInstituicao());
+            stmt.setString(3, localidade.getEmail());
+            stmt.setString(3, localidade.getCEP());
+            stmt.setInt(3, localidade.getNumero());
+            
             
             stmt.executeUpdate();
             return true;
@@ -51,5 +50,10 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
+    
+    
+    
+    
     
 }

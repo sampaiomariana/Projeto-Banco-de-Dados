@@ -18,22 +18,23 @@ private int NumerodeVoluntarios;
 private float TaxadeEficacia;
 private Date DatadeInicio;
 private Date DatadeTermino;
-private Localidade CNPJ;
-private PesquisadorChefe CadastroPesquisador;
+private Localidade localidade;
+private PesquisadorChefe pesquisador;
 
     public Pesquisa (){
     }
 
     public Pesquisa (int NumerodeVoluntarios, float TaxadeEficacia, Date DatadeInicio,
-            Date DatadeTermino, Localidade CNPJ, PesquisadorChefe CadastroPesquisador){
+            Date DatadeTermino, Localidade localidade, PesquisadorChefe pesquisador){
         
         this.NumerodeVoluntarios = NumerodeVoluntarios;
         this.TaxadeEficacia = TaxadeEficacia;
         this.DatadeInicio = DatadeInicio ;
         this.DatadeTermino = DatadeTermino;
-        this.CNPJ = CNPJ;
-        this.CadastroPesquisador = CadastroPesquisador; 
+        this.localidade = localidade;
+        this.pesquisador = pesquisador; 
     }
+
     public int getIdPesquisa() {
         return IdPesquisa;
     }
@@ -74,22 +75,22 @@ private PesquisadorChefe CadastroPesquisador;
         this.DatadeTermino = DatadeTermino;
     }
 
-    public Localidade getCNPJ() {
-        return CNPJ;
+    public Localidade getLocalidade() {
+        return localidade;
     }
 
-    public void setCNPJ(Localidade CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setLocalidade(Localidade localidade) {
+        this.localidade = localidade;
     }
 
-    public PesquisadorChefe getCadastroPesquisador() {
-        return CadastroPesquisador;
+    public PesquisadorChefe getPesquisador() {
+        return pesquisador;
     }
 
-    public void setCadastroPesquisador(PesquisadorChefe CadastroPesquisador) {
-        this.CadastroPesquisador = CadastroPesquisador;
+    public void setPesquisador(PesquisadorChefe pesquisador) {
+        this.pesquisador = pesquisador;
     }
-
+    
     
     
 }

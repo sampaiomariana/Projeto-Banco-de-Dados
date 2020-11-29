@@ -11,7 +11,7 @@ package model.bean;
  */
 public class Casoscovid {
         
-    private Destino CNPJ;
+    private Destino destino;
     private int QuantidadedeInternados;
     private int QuantidadedeCurados;
     private int QuantidadedeMortes;
@@ -21,19 +21,20 @@ public class Casoscovid {
     }
     
     
-    public Casoscovid( Destino CNPJ, int QuantidadedeInternados, int QuantidadedeCurados
+    public Casoscovid( Destino destino, int QuantidadedeInternados, int QuantidadedeCurados
             , int QuantidadedeMortes){
-        this.CNPJ = CNPJ;
+        this.destino = destino;
         this.QuantidadedeInternados = QuantidadedeInternados;
         this.QuantidadedeCurados = QuantidadedeCurados;
         this.QuantidadedeMortes = QuantidadedeMortes; 
     }
-    public Destino getCNPJ() {
-        return CNPJ;
+
+    public Destino getDestino() {
+        return destino;
     }
 
-    public void setCNPJ(Destino CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setDestino(Destino destino) {
+        this.destino = destino;
     }
 
     public int getQuantidadedeInternados() {
@@ -59,7 +60,6 @@ public class Casoscovid {
     public void setQuantidadedeMortes(int QuantidadedeMortes) {
         this.QuantidadedeMortes = QuantidadedeMortes;
     }
-
     
-
+    
 }

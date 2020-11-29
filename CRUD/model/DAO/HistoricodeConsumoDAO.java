@@ -5,40 +5,38 @@
  */
 package model.DAO;
 
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.bean.Destino;
+import model.bean.HistoricodeConsumo;
+import model.bean.lote;
 
 /**
  *
  * @author sampa
  */
-public class DestinoDAO {
+public class HistoricodeConsumoDAO {
     
-    private Connection conexao =  null;
     
-    public DestinoDAO(){
+    private Connection conexao = null;
+    
+    
+    public HistoricodeConsumoDAO  (){
         conexao = ConnectionFactory.getConnection();
+        
     }
     
-    public boolean create (Destino destino){
+     public boolean create (HistoricodeConsumo HistoricoConsumo){
         
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO destino (CNPJ, Nome, TipodeEstabelecimento,UF,CEP,Numero) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO HistoricoConsumo (CNPJ, Mes, QuantidadeMensal) VALUES (?,?,?)";
         
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, destino.getCNPJ());
-            stmt.setString(2, destino.getNome());
-            stmt.setString(3, destino.getTipodeestabelecimento());
-            stmt.setString(4, destino.getUF());
-            stmt.setString(5, destino.getCEP());
-            stmt.setInt(6, destino.getNumero());
+            stmt.setString(1, HistoricoConsumo.getDestino().getCNPJ());
+            stmt.setInt(2, HistoricoConsumo.getMes());
+            stmt.setInt(3, HistoricoConsumo.getQuantidadeMensal());
             
             stmt.executeUpdate();
             return true;
@@ -51,5 +49,8 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+   
+    
+    
     
 }
