@@ -8,7 +8,12 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Item;
+import model.bean.Localidade;
 import model.bean.Telefone;
 
 
@@ -47,6 +52,43 @@ public class TelefoneDAO {
         }
     }
    
+     public List<Telefone> read(){
+        
+         String sql = "SELECT * FROM telefone ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Telefone> telefones = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Telefone telefone = new Telefone();
+                telefone.setNumeroTelefone(rs.getString("NumeroTelefone"));
+                
+                Localidade localidade = new Localidade();
+                localidade.setCNPJ(rs.getString("CNPJ"));
+                telefones.add(telefone);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return telefones;
+    }
+    
     
     
     

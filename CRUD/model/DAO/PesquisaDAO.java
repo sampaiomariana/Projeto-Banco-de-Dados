@@ -9,8 +9,13 @@ import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Localidade;
 import model.bean.Pesquisa;
+import model.bean.PesquisadorChefe;
 
 
 /**
@@ -53,7 +58,50 @@ public class PesquisaDAO {
         }
     }
    
-    
+   public List<Pesquisa> read(){
+        
+         String sql = "SELECT * FROM pesquisa ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Pesquisa> pesquisas = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Pesquisa pesquisa = new Pesquisa();
+                
+                pesquisa.setIdPesquisa(rs.getInt("IdPesquisa"));
+                pesquisa.setNumerodeVoluntarios(rs.getInt("NumerodeVoluntarios"));
+                pesquisa.setDatadeInicio(rs.getDate("DatadeInicio"));
+                pesquisa.setDatadeTermino(rs.getDate("DatadeTermino"));
+                
+                Localidade localidade = new Localidade();
+                localidade.setCNPJ(rs.getString("CNPJ"));
+                
+                PesquisadorChefe pesquisador = new PesquisadorChefe();
+                pesquisador.setCadastroPesquisador(rs.getInt("CadastroPesquisador"));
+                pesquisas.add(pesquisa);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return pesquisas;
+    }
+     
     
     
     

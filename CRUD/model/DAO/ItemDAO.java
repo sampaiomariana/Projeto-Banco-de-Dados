@@ -8,7 +8,10 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.bean.Item;
@@ -59,4 +62,44 @@ public class ItemDAO {
             
         }
     }
+    
+    public List<Item> read(){
+        
+         String sql = "SELECT * FROM item ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Item> itens = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Item item = new Item();
+                
+                item.setIdItem(rs.getInt("IdItem"));
+                item.setNome(rs.getString("Nome"));
+                item.setTipodeitem(rs.getString("Tipodeitem"));
+                item.setProducaohistorica(rs.getInt("Producaohistorica"));
+                item.setProducaodoultimomes(rs.getInt("Producaodoultimomes"));
+                itens.add(item);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return itens;
+    }
+    
 }

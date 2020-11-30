@@ -8,8 +8,13 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Destino;
 import model.bean.HistoricodeConsumo;
+import model.bean.Item;
 import model.bean.lote;
 
 /**
@@ -51,6 +56,49 @@ public class HistoricodeConsumoDAO {
     }
    
     
-    
+     public List<HistoricodeConsumo> read(){
+        
+         String sql = "SELECT * FROM historicodeconsumo ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<HistoricodeConsumo> historico = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                HistoricodeConsumo historicodeconsumo = new HistoricodeConsumo();
+                
+                historicodeconsumo.setMes(rs.getInt("Mes"));
+                historicodeconsumo.setQuantidadeMensal(rs.getInt("QuantidadeMensal"));
+                
+                Destino destino = new Destino();
+                destino.setCNPJ(rs.getString("CNPJ"));
+                
+                Item item = new Item();
+                item.setIdItem(rs.getInt("IdItem"));
+                
+                
+                historico.add(historicodeconsumo);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return historico;
+    }
+  
     
 }

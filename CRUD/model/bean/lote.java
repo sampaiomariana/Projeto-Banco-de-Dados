@@ -58,6 +58,10 @@ public class lote {
     public void setDestino(Destino destino) {
         this.destino = destino;
     }
+
+    public void setForncedor(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

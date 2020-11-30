@@ -8,8 +8,13 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.Casoscovid;
+import model.bean.Destino;
+
 
 
 
@@ -52,7 +57,45 @@ public class CasosCovidDAO {
     }
    
     
-    
+     public List<Casoscovid> read(){
+        
+         String sql = "SELECT * FROM Casoscovid ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Casoscovid> casos = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Casoscovid casoscovid = new Casoscovid();
+                
+                casoscovid.setQuantidadedeCurados(rs.getInt("QuantidadedeCurados"));
+                casoscovid.setQuantidadedeInternados(rs.getInt("QuantidadedeInternados"));
+                casoscovid.setQuantidadedeMortes(rs.getInt("QuantidadedeMortes"));
+                casos.add(casoscovid);
+                
+                Destino destino = new Destino();
+                destino.setCNPJ(rs.getString("CNPJ"));
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return casos;
+    }
+   
     
  
 

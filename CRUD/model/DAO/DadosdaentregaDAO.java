@@ -9,8 +9,13 @@ import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.Dadosdaentrega;
+import model.bean.lote;
+
 
 /**
  *
@@ -56,6 +61,49 @@ public class DadosdaentregaDAO {
         }
     }
    
+    public List<Dadosdaentrega> read(){
+        
+         String sql = "SELECT * FROM Dadosdaentrega ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Dadosdaentrega> entregas = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Dadosdaentrega entrega = new Dadosdaentrega();
+                
+                entrega.setStatusLote(rs.getString("StatusLote"));
+                entrega.setDatadeSolicitacao(rs.getDate("DatadeSolicitacao"));
+                entrega.setDatadeEntegra(rs.getDate("DatadeSolicitacao"));
+                
+                
+                lote lote = new lote();
+                
+                lote.setIdLote(rs.getInt("IdLote"));
+                
+                
+                entregas.add(entrega);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return entregas;
+    }
     
     
     

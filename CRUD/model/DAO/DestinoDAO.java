@@ -9,10 +9,14 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.bean.Destino;
+
 
 /**
  *
@@ -51,5 +55,47 @@ public class DestinoDAO {
             ConnectionFactory.closeConnection(conexao, stmt);
         }
     }
+    
+    public List<Destino> read(){
+        
+         String sql = "SELECT * FROM destino ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Destino> destinos = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Destino destino = new Destino();
+                
+               destino.setCNPJ(rs.getString("CNPJ"));
+               destino.setNome(rs.getString("Nome"));
+               destino.setTipodeestabelecimento(rs.getString("Tipodeestabelecimento"));
+               destino.setUF(rs.getString("UF"));
+               destino.setCEP(rs.getString("CEP"));
+               destino.setNumero(rs.getInt("Numero"));
+                
+               destinos.add(destino);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return destinos;
+    }
+    
     
 }

@@ -8,7 +8,10 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.Localidade;
 
 
@@ -52,6 +55,48 @@ public class LocalidadeDAO {
     }
    
     
+    
+    public List<Localidade> read(){
+        
+         String sql = "SELECT * FROM localidade ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Localidade> localidades = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+            Localidade localidade = new Localidade();
+                
+                localidade.setCNPJ(rs.getString("CNPJ"));
+                localidade.setNomedaInstituicao(rs.getString("NomedaInstituicao"));
+                localidade.setEmail(rs.getString("Email"));
+                localidade.setCEP(rs.getString("CEP"));
+                localidade.setNumero(rs.getInt("Numero"));
+                
+                
+                
+                localidades.add(localidade);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return localidades;
+    }
     
     
     

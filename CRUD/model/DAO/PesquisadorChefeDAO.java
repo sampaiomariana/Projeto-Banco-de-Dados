@@ -8,7 +8,10 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.PesquisadorChefe;
 
 
@@ -51,6 +54,45 @@ public class PesquisadorChefeDAO {
         }
     }
    
+     public List<PesquisadorChefe> read(){
+        
+         String sql = "SELECT * FROM  pesquisador ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<PesquisadorChefe> pesquisadores = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                PesquisadorChefe pesquisador = new PesquisadorChefe();
+                
+                pesquisador.setCadastroPesquisador(rs.getInt("CadastroPesquisador"));
+                pesquisador.setNome(rs.getString("Nome"));
+                pesquisador.setEspecialidade(rs.getString("Especialidade"));
+                pesquisador.setEmail(rs.getString("Email"));
+                
+                pesquisadores.add(pesquisador);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return pesquisadores;
+    }
+    
     
     
     

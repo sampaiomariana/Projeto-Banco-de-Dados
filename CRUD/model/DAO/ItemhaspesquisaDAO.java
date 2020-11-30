@@ -8,8 +8,13 @@ package model.DAO;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Item;
 import model.bean.Itemhaspesquisa;
+import model.bean.Pesquisa;
 
 
 /**
@@ -48,8 +53,47 @@ public class ItemhaspesquisaDAO {
         }
     }
    
+    public List<Itemhaspesquisa > read(){
+        
+         String sql = "SELECT * FROM Itemhaspesquisa  ";
+         
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Itemhaspesquisa > itens_pesquisados = new ArrayList<>();
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Itemhaspesquisa pesquisados = new Itemhaspesquisa ();
+                
+                Item item = new Item();
+                item.setIdItem(rs.getInt("IdItem"));
+                
+                Pesquisa pesquisa = new Pesquisa();
+                pesquisa.setIdPesquisa(rs.getInt("IdPesquisa"));
+                
+                itens_pesquisados.add(pesquisados);
+                
+                
+            
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Erro: "+ex);
+            
+        } finally {
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        
+        
+        }
+           return itens_pesquisados;
     
     
     
     
+    }
 }
