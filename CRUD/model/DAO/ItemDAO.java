@@ -102,4 +102,37 @@ public class ItemDAO {
            return itens;
     }
     
+      public boolean update (Item item ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE item SET Tipodeitem = ? WHERE IdItem = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1 , item.getNome());
+            stmt.setString(2, item.getTipodeitem());
+            stmt.setInt(3 , item.getProducaohistorica());
+            stmt.setInt(4, item.getProducaodoultimomes());
+            stmt.setInt(5, item.getIdItem());
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
 }

@@ -107,4 +107,33 @@ public class DadosdaentregaDAO {
     
     
     
+    
+     public boolean update (Dadosdaentrega DadosdaEntrega){
+        
+        PreparedStatement stmt = null;
+        String sql = "UPDATE dadosdaentrega SET StatusLote = ? WHERE IdLote = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, DadosdaEntrega.getStatusLote());
+            stmt.setDate(2, (Date) DadosdaEntrega.getDatadeSolicitacao());
+            stmt.setDate(3, (Date) DadosdaEntrega.getDatadeEntegra());
+            
+            lote lote = new lote();
+            stmt.setInt(4,lote.getIdLote());
+            
+            
+            
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
 }
