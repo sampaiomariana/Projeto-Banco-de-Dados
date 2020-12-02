@@ -5,7 +5,7 @@
  */
 package model.DAO;
 
-import connection.ConnectionFactory;
+import Connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
