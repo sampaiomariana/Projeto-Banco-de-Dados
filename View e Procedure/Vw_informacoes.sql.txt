@@ -1,0 +1,29 @@
+create view vw_informacoes 
+AS select lote.idlote, lote.fornecedir, dadosentrega.StatusLote, pesquisa.CNPJ from lote
+join dadosdaentrega
+on lote.idlote = dadosdaentrega.IdLote
+join pesquisa 
+on pesquisa.idPesquisa = lote.idlote 
+order by fonecedor;
+
+select * 
+FROM vw_informacoes 
+order by fornecedor;
+
+Procedure 
+
+create procedure AdicionarLote ( 
+
+	in Fornecedor varchar(45),
+	Valor float
+	
+
+)
+
+BEGIN 
+	insert into lote (Fornecedor,valor)
+	values (Fornecedor,float);
+END
+
+call AdicionarLote('Governo de Brasília', '15.026');
+select * from lote;

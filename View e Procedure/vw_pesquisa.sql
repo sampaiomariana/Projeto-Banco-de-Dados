@@ -18,3 +18,24 @@ order by pesquisadorchefe;
 
 
 SELECT * FROM covid.vw_pesquisa;
+
+
+create procedure NovaPesquisa (
+		in NumerodeVoluntarios int,
+		TaxadeEficacia float,
+		DatadeInicio date,
+		DatadeTermino date,
+		
+
+)
+
+
+
+BEGIN 
+	insert into pesquisa( NumerodeVoluntarios,TaxadeEficacia,DatadeInicio,DatadeTermino)
+    values ( NumerodeVoluntarios,TaxadeEficacia,DatadeInicio,DatadeTermino)
+END
+
+call NovaPesquisa ('2545', '78.4','12/03/2020', '15/10/2020');
+
+select * from pesquisa;
