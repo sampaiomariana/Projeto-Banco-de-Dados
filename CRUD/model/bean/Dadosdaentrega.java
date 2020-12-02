@@ -12,7 +12,7 @@ import java.util.Date;
  * @author sampa
  */
 public class Dadosdaentrega {
-    private lote IdLote;
+    private lote lote;
     private String StatusLote;
     private Date DatadeSolicitacao;
     private Date DatadeEntegra;
@@ -21,20 +21,22 @@ public class Dadosdaentrega {
     public Dadosdaentrega(){
     }
     
-    public Dadosdaentrega( lote IdLote, String StatusLote, Date DatadeSolicitacao, Date DatadeEntrega){
-        this.IdLote = IdLote;
+    public Dadosdaentrega( lote lote, String StatusLote, Date DatadeSolicitacao, Date DatadeEntrega){
+        this.lote = lote;
         this.StatusLote = StatusLote;
         this.DatadeSolicitacao = DatadeSolicitacao;
         this.DatadeEntegra = DatadeEntrega;
     }
 
-    public lote getIdLote() {
-        return IdLote;
+    public lote getLote() {
+        return lote;
     }
 
-    public void setIdLote(lote IdLote) {
-        this.IdLote = IdLote;
+    public void setLote(lote lote) {
+        this.lote = lote;
     }
+
+    
 
     public String getStatusLote() {
         return StatusLote;

@@ -102,7 +102,61 @@ public class PesquisaDAO {
            return pesquisas;
     }
      
+     
+     public boolean update(Pesquisa pesquisa){
+        
+        PreparedStatement stmt = null;
+        String sql = "UPDATE pesquisa SET NumerodeVoluntarios = ? WHERE IdPesquisa = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, pesquisa.getIdPesquisa());
+            stmt.setInt(2, pesquisa.getNumerodeVoluntarios());
+            stmt.setFloat(3, pesquisa.getTaxadeEficacia());
+            stmt.setDate(4, (Date) pesquisa.getDatadeInicio());
+            stmt.setDate(5, (Date) pesquisa.getDatadeTermino());
+            stmt.setInt(6, pesquisa.getPesquisador().getCadastroPesquisador());
+            stmt.setString(7, pesquisa.getLocalidade().getCNPJ());
+            
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
+   public boolean delete (Pesquisa pesquisa){
+        
+        PreparedStatement stmt = null;
+        String sql = "DELETE from pesquisa  WHERE IdPesquisa = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, pesquisa.getIdPesquisa());
+            
+            
+            
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
+   
+    }
+  
     
     
     
-}
+

@@ -100,5 +100,68 @@ public class HistoricodeConsumoDAO {
            return historico;
     }
   
+     
+      public boolean update (HistoricodeConsumo historicodeconsumo ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE historicodeconsumo SET QuantidadeMensal = ? WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString(1, historicodeconsumo.getDestino().getCNPJ());
+            stmt.setInt(2, historicodeconsumo.getItem().getIdItem());
+            stmt.setInt(3, historicodeconsumo.getMes());
+            stmt.setInt(4, historicodeconsumo.getQuantidadeMensal());
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+      public boolean delete (HistoricodeConsumo historicodeconsumo ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE from historicodeconsumo  WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString(1, historicodeconsumo.getDestino().getCNPJ());
+           
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
     
 }

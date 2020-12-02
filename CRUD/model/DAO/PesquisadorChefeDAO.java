@@ -93,7 +93,50 @@ public class PesquisadorChefeDAO {
            return pesquisadores;
     }
     
+     
+     public boolean update  (PesquisadorChefe pesquisador){
+        
+        PreparedStatement stmt = null;
+        String sql = "UPDATE pesquisador SET Email = ? WHERE CadastroPesquisador = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, pesquisador.getNome());
+            stmt.setString(2, pesquisador.getEspecialidade());
+            stmt.setString(3, pesquisador.getEmail());
+            
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
     
-    
+     public boolean delete (PesquisadorChefe pesquisador){
+        
+        PreparedStatement stmt = null;
+        String sql = "DELETE from pesquisador WHERE CadastroPesquisador = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, pesquisador.getCadastroPesquisador());
+           
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
     
 }

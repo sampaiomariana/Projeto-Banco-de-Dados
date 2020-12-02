@@ -43,7 +43,7 @@ public class CasosCovidDAO {
             stmt.setString(1, CasosCovid.getDestino().getCNPJ());
             stmt.setInt(2, CasosCovid.getQuantidadedeInternados());
             stmt.setInt(3, CasosCovid.getQuantidadedeCurados());
-            stmt.setInt(3, CasosCovid.getQuantidadedeMortes());
+            stmt.setInt(4, CasosCovid.getQuantidadedeMortes());
             stmt.executeUpdate();
             return true;
             
@@ -124,7 +124,29 @@ public class CasosCovidDAO {
         }
     }
    
-
+  public boolean delete (Casoscovid CasosCovid){
+        
+        PreparedStatement stmt = null;
+        String sql = "DELETE from CasosCovid  WHERE CNPJ = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, CasosCovid.getDestino().getCNPJ());
+           
+            
+           
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
  
 
 }

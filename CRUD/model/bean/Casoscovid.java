@@ -60,6 +60,10 @@ public class Casoscovid {
     public void setQuantidadedeMortes(int QuantidadedeMortes) {
         this.QuantidadedeMortes = QuantidadedeMortes;
     }
+
+    public void setdestino(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

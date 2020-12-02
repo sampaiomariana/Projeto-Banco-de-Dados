@@ -46,7 +46,7 @@ public class DadosdaentregaDAO {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, DadosdaEntrega.getStatusLote());
             stmt.setDate(2, (Date) DadosdaEntrega.getDatadeSolicitacao());
-            stmt.setDate(2, (Date) DadosdaEntrega.getDatadeEntegra());
+            stmt.setDate(3, (Date) DadosdaEntrega.getDatadeEntegra());
             
             
             stmt.executeUpdate();
@@ -118,9 +118,33 @@ public class DadosdaentregaDAO {
             stmt.setString(1, DadosdaEntrega.getStatusLote());
             stmt.setDate(2, (Date) DadosdaEntrega.getDatadeSolicitacao());
             stmt.setDate(3, (Date) DadosdaEntrega.getDatadeEntegra());
+            stmt.setInt(4, DadosdaEntrega.getLote().getIdLote());
             
-            lote lote = new lote();
-            stmt.setInt(4,lote.getIdLote());
+            
+            
+            
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
+      public boolean delete (Dadosdaentrega DadosdaEntrega){
+        
+        PreparedStatement stmt = null;
+        String sql = "DELETE from dadosdaentrega  WHERE IdLote = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setInt(1, DadosdaEntrega.getLote().getIdLote());
+            
             
             
             

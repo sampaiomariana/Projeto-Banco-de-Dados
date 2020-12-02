@@ -12,7 +12,7 @@ package model.bean;
 public class HistoricodeConsumo {
     
    private Destino destino;
-   private Item IdItem;
+   private Item item;
    private int Mes;
    private int QuantidadeMensal;
    
@@ -20,10 +20,10 @@ public class HistoricodeConsumo {
    }
    
    
-   public HistoricodeConsumo (Destino destino, Item IdItem, int Mes, int QuantidadeMensal){
+   public HistoricodeConsumo (Destino destino, Item item, int Mes, int QuantidadeMensal){
        
        this.destino = destino;
-       this.IdItem = IdItem;
+       this.item = item;
        this.Mes = Mes;
        this.QuantidadeMensal = QuantidadeMensal;
    }
@@ -36,14 +36,15 @@ public class HistoricodeConsumo {
         this.destino = destino;
     }
 
-    public Item getIdItem() {
-        return IdItem;
+    public Item getItem() {
+        return item;
     }
 
-    public void setIdItem(Item IdItem) {
-        this.IdItem = IdItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
+   
     public int getMes() {
         return Mes;
     }

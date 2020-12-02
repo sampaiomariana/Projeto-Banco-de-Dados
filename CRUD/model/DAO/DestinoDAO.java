@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.bean.Destino;
+import model.bean.Item;
 
 
 /**
@@ -96,6 +97,73 @@ public class DestinoDAO {
         }
            return destinos;
     }
+    
+     public boolean update (Destino destino ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE destino SET Nome = ? WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString(1 , destino.getCNPJ());
+            stmt.setString(2, destino.getNome());
+            stmt.setString(3 , destino.getTipodeestabelecimento());
+            stmt.setString(4, destino.getUF());
+            stmt.setString(5, destino.getCEP());
+            stmt.setInt(6, destino.getNumero());
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+     public boolean delete (Destino destino ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE FROM destino  WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString(1 , destino.getCNPJ());
+          
+           
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+    
     
     
 }

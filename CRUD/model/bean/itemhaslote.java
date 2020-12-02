@@ -10,36 +10,37 @@ package model.bean;
  * @author sampa
  */
 public class itemhaslote {
-    private Item IdItem;
-    private lote IdLote;
+    private Item item;
+    private lote lote;
     private int quantidade;
     
     public itemhaslote() {
     }
     
-    public itemhaslote (Item IdItem, lote IdLote, int quantidade){
+    public itemhaslote (Item item, lote lote, int quantidade){
         
-        this.IdItem = IdItem;
-        this.IdLote = IdLote;
+        this.item = item;
+        this.lote = lote;
         this.quantidade = quantidade;
     }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public lote getLote() {
+        return lote;
+    }
+
+    public void setLote(lote lote) {
+        this.lote = lote;
+    }
     
-    public Item getIdItem() {
-        return IdItem;
-    }
-
-    public void setIdItem(Item IdItem) {
-        this.IdItem = IdItem;
-    }
-
-    public lote getIdLote() {
-        return IdLote;
-    }
-
-    public void setIdLote(lote IdLote) {
-        this.IdLote = IdLote;
-    }
-
+    
     public int getQuantidade() {
         return quantidade;
     }

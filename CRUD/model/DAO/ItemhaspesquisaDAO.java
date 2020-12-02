@@ -15,6 +15,7 @@ import java.util.List;
 import model.bean.Item;
 import model.bean.Itemhaspesquisa;
 import model.bean.Pesquisa;
+import model.bean.lote;
 
 
 /**
@@ -96,4 +97,67 @@ public class ItemhaspesquisaDAO {
     
     
     }
+    
+     public boolean update (Itemhaspesquisa item_pesquisa ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE item_pesquisa SET IdItem = ? WHERE IdPesquisa = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+           
+            stmt.setInt(1, item_pesquisa.getItem().getIdItem());
+            stmt.setInt(2, item_pesquisa.getPesquisa().getIdPesquisa());
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+     public boolean delete (Itemhaspesquisa item_pesquisa ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE from item_pesquisa  WHERE IdPesquisa = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+           
+
+            stmt.setInt(1, item_pesquisa.getPesquisa().getIdPesquisa());
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
 }

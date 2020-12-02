@@ -98,6 +98,72 @@ public class ItemhasloteDAO {
     
     
     
+     public boolean update (itemhaslote ItemhasLote ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE ItemhasLote SET quantidade = ? WHERE IdItem = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+           
+            
+             stmt.setInt(1, ItemhasLote.getItem().getIdItem());
+             stmt.setInt(2, ItemhasLote.getLote().getIdLote());
+             
+             stmt.setInt(3, ItemhasLote.getQuantidade());
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
     
+     public boolean delete (itemhaslote ItemhasLote ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE from ItemhasLote  WHERE IdItem = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+           
+            
+             stmt.setInt(1, ItemhasLote.getItem().getIdItem());
+           
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
     
 }

@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.Financiamento;
+import model.bean.Pesquisa;
+
 
 /**
  *
@@ -97,7 +99,74 @@ public class FinanciamentoDAO {
            return financiamentos;
     }
     
+     public boolean update (Financiamento financiamento ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE financiamento SET Publicoouprivado = ? WHERE idFinanciamento = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setInt(1, financiamento.getIdFinanciamento());
+            stmt.setString(2, financiamento.getCPFouCNPJ());
+            stmt.setString(3, financiamento.getPublicoouPrivado());
+            stmt.setInt(4, financiamento.getValor());
+            stmt.setDate(5, (Date) financiamento.getDatadeFinanciamento());
+            stmt.setInt(6, financiamento.getPesquisa().getIdPesquisa());
+          
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
     
    
+    public boolean delete (Financiamento financiamento ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE from financiamento  WHERE idFinanciamento = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setInt(1, financiamento.getIdFinanciamento());
+           
+          
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
     
+    
+   
 }

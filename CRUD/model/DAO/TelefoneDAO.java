@@ -90,6 +90,52 @@ public class TelefoneDAO {
     }
     
     
+      public boolean update (Telefone telefone){
+        
+        PreparedStatement stmt = null;
+        String sql = "UPDATE  telefone SET NumerodeTelefone = ? where CNPJ = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, telefone.getLocalidade().getCNPJ());
+            stmt.setString(2, telefone.getNumeroTelefone());
+           
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
+    
+    
+    public boolean delete(Telefone telefone){
+        
+        PreparedStatement stmt = null;
+        String sql = "DELETE FROM telefone WHERE CNPJ = ?";
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, telefone.getLocalidade().getCNPJ());
+            
+           
+            stmt.executeUpdate();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro: "+ex);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt);
+        }
+    }
+   
     
     
     

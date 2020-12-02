@@ -98,6 +98,77 @@ public class LocalidadeDAO {
            return localidades;
     }
     
+     public boolean update (Localidade localidade ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE localidade SET Email = ? WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString (1, localidade.getCNPJ());
+            stmt.setString (2, localidade.getNomedaInstituicao());
+            stmt.setString (3, localidade.getEmail());
+            stmt.setString (4, localidade.getCEP());
+            stmt.setInt(5, localidade.getNumero());
+            
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+    
+    
+    public boolean delete (Localidade localidade ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE from localidade  WHERE CNPJ = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            
+            stmt.setString (1, localidade.getCNPJ());
+           
+            
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
     
     
     

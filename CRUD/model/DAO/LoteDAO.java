@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.bean.Dadosdaentrega;
+import model.bean.Destino;
 import model.bean.lote;
 
 
@@ -97,6 +98,75 @@ public class LoteDAO {
            return lotes;
     
     }
+    
+     public boolean update (lote lote ){
+        PreparedStatement stmt = null;
+        String sql = "UPDATE lote SET Valor = ? WHERE IdLote = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1 , lote.getIdLote());
+            stmt.setString(2, lote.getFornecedor());
+            stmt.setFloat(3, lote.getValor());
+            stmt.setString(4, lote.getDestino().getCNPJ());
+         
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+    
+     public boolean delete(lote lote ){
+        PreparedStatement stmt = null;
+        String sql = "DELETE FROM lote  WHERE IdLote = ? ";
+       
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1 , lote.getIdLote());
+            
+         
+            
+            
+            
+            
+ /*
+* Depois que aceitou os termos da variável é necessário executar o stmt
+* 
+*/
+            stmt.executeUpdate();
+            return true;
+                                        
+        } catch (SQLException ex) {
+           System.err.println("Erro: "+ex);
+           return false;
+        } finally {                
+                ConnectionFactory.closeConnection(conexao, stmt);
+                
+            
+        }
+    }
+  
+    
+    
 }
     
 
