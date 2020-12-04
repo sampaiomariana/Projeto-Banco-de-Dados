@@ -7,3 +7,20 @@ Para o seu desenvolvimento foi utilizado:
 IDE - Netbeans 
 Servidor -  Xampp
 Banco de Dados - MySQL Workbench 
+
+Para acesso aos códigos:
+
+Projeto-Banco-de-Dados/CRUD - Interface Gráfica/ProjetoBD/src/projetobd/
+
+Eles estão divididos em três diretórios:
+
+DAO 
+Bean 
+Main
+
+Para acesso ao desenvolvimento do formulário:
+
+Projeto-Banco-de-Dados/CRUD - Interface Gráfica/ProjetoBD/src/Formulário/
+
+Ele foi desenvolvido utilizando JFrame.
+
