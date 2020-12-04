@@ -1,8 +1,3 @@
-USE `covid`;
-DROP procedure IF EXISTS `AdicionarItem`;
-
-DELIMITER $$
-USE `covid`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AdicionarItem`(
 	in IdItem int,
 	Nome varchar (45),
@@ -11,8 +6,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AdicionarItem`(
     Producaodoultimomes int
 )
 BEGIN 
-	insert into item(IdItem,Tipodeitem,Producaohistorica,Producaodoultimomes)
-    values (IdItem, Tipodeitem,Producaohistorica,Producaodoultimomes);
-END$$
-
-DELIMITER ;
+	insert into item(IdItem,Nome,Tipodeitem,Producaohistorica,Producaodoultimomes)
+    values (IdItem, Nome,Tipodeitem,Producaohistorica,Producaodoultimomes);
+END
