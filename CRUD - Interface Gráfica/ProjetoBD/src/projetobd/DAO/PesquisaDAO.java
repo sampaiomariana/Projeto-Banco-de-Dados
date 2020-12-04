@@ -5,10 +5,11 @@ import projetobd.connection.ConectarBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
-import model.bean.Pesquisa;
-import model.bean.PesquisadorChefe;
-import model.bean.Localidade;
+import projetobd.bean.Pesquisa;
+import projetobd.bean.PesquisadorChefe;
+import projetobd.bean.Localidade;
 
 
 /**
@@ -32,8 +33,8 @@ public class PesquisaDAO {
         float lTaxadeEficacia = obj.getTaxadeEficacia();
         Date lDatadeInicio = obj.getDatadeInicio();
         Date lDatadeTermino = obj.getDatadeTermino();
-		int lCadastroPesquisador = obj.getPesquisadorChefe().getCadastroPesquisador();
-		String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
+	int lCadastroPesquisador = obj.getPesquisador().getCadastroPesquisador();
+	String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
         
         objBD.conectar();
        
@@ -50,10 +51,10 @@ public class PesquisaDAO {
              stmt.setInt(1, lIdPesquisa);
              stmt.setInt(2, lNumerodeVoluntarios);
              stmt.setFloat(3, lTaxadeEficacia);
-             stmt.setDate(4, lDatadeInicio);
-             stmt.setDate(5, lDatadeTermino);
-			 stmt.setString (6, lCadastroPesquisador);
-			 stmt.setInt (7, lCNPJLocalidade);
+             stmt.setDate(4, (java.sql.Date) lDatadeInicio);
+             stmt.setDate(5, (java.sql.Date) lDatadeTermino);
+            stmt.setInt (6, lCadastroPesquisador);
+            stmt.setString (7, lCNPJLocalidade);
              
              stmt.execute();
              
@@ -62,6 +63,7 @@ public class PesquisaDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
 		  
     public ResultSet selecionar (){
@@ -97,8 +99,8 @@ public class PesquisaDAO {
         float lTaxadeEficacia = obj.getTaxadeEficacia();
         Date lDatadeInicio = obj.getDatadeInicio();
         Date lDatadeTermino = obj.getDatadeTermino();
-		int lCadastroPesquisador = obj.getPesquisadorChefe().getCadastroPesquisador();
-		String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
+	int lCadastroPesquisador = obj.getPesquisador().getCadastroPesquisador();
+	String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
         
         objBD.conectar();
      try {
@@ -111,10 +113,10 @@ public class PesquisaDAO {
              objstmt.setInt(1, lIdPesquisa);
              objstmt.setInt(2, lNumerodeVoluntarios);
              objstmt.setFloat(3, lTaxadeEficacia);
-             objstmt.setDate(4, lDatadeInicio);
-             objstmt.setDate(5, lDatadeTermino);
-			 objstmt.setString (6, lCadastroPesquisador);
-			 objstmt.setInt (7, lCNPJLocalidade);
+             objstmt.setDate(4, (java.sql.Date) lDatadeInicio);
+             objstmt.setDate(5, (java.sql.Date) lDatadeTermino);
+            objstmt.setInt (6, lCadastroPesquisador);
+            objstmt.setString (7, lCNPJLocalidade);
              
              objstmt.execute();
              

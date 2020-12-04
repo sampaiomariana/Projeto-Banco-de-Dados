@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Localidade;
+import projetobd.bean.Localidade;
 
 /**
  *
@@ -27,8 +27,8 @@ public class LocalidadeDAO {
         String lCNPJ = obj.getCNPJ();
         String lNomedaInstituicao  = obj.getNomedaInstituicao ();
         String lEmail = obj.getEmail();
-        String Cep = obj.getCep();
-		int Numero = obj.getNumero();
+        String lCEP = obj.getCEP();
+	int lNumero = obj.getNumero();
         objBD.conectar();
         
    
@@ -46,7 +46,7 @@ public class LocalidadeDAO {
              stmt.setString(1, lCNPJ);
              stmt.setString(2, lNomedaInstituicao);
              stmt.setString(3, lEmail);
-             stmt.setString(4, lCep);
+             stmt.setString(4, lCEP);
              stmt.setInt(5, lNumero);
              
              stmt.execute();
@@ -56,9 +56,10 @@ public class LocalidadeDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
 		
-		  public ResultSet selecionar (){
+         public ResultSet selecionar (){
         
         ConectarBD objBD = new ConectarBD();
       
@@ -86,11 +87,11 @@ public class LocalidadeDAO {
          
           ConectarBD objBD = new ConectarBD();
         
-		String lCNPJ = obj.getCNPJ();
+	String lCNPJ = obj.getCNPJ();
         String lNomedaInstituicao  = obj.getNomedaInstituicao ();
         String lEmail = obj.getEmail();
-        String Cep = obj.getCep();
-		int Numero = obj.getNumero();
+        String lCEP = obj.getCEP();
+	int lNumero = obj.getNumero();
         
 		objBD.conectar(); 
          
@@ -107,7 +108,7 @@ public class LocalidadeDAO {
              objstmt.setString(1, lCNPJ);
              objstmt.setString(2, lNomedaInstituicao);
              objstmt.setString(3, lEmail);
-             objstmt.setString(4, lCep);
+             objstmt.setString(4, lCEP);
              objstmt.setInt(5, lNumero);
 		
              
@@ -123,7 +124,7 @@ public class LocalidadeDAO {
     public void deletar (Localidade obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lCNPJ = obj.getCNPJ();
+       String lCNPJ = obj.getCNPJ();
         objBD.conectar();
         try {
             

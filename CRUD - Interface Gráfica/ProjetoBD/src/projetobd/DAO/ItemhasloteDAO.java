@@ -6,12 +6,13 @@
 package projetobd.DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.itemhaslote;
+import projetobd.bean.itemhaslote;
 import projetobd.connection.ConectarBD;
-import model.bean.Item;
-import model.bean.lote;
+import projetobd.bean.Item;
+import projetobd.bean.lote;
 
 
 /**
@@ -79,7 +80,7 @@ public class ItemhasloteDAO {
     }
 
     
-   public void atualizar (Iitemhaslote obj){
+   public void atualizar (itemhaslote obj){
          
           ConectarBD objBD = new ConectarBD();
         
@@ -111,7 +112,7 @@ public class ItemhasloteDAO {
     public void deletar (itemhaslote obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lIdItem = obj.getIdItem();
+        int lIdItem = obj.getItem().getIdItem();
         objBD.conectar();
         try {
             

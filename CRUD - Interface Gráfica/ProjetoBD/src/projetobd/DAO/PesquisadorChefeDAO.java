@@ -6,11 +6,12 @@
 package projetobd.DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Item;
+import projetobd.bean.Item;
 import projetobd.connection.ConectarBD;
-import model.bean.PesquisadorChefe;
+import projetobd.bean.PesquisadorChefe;
 
 /**
  *

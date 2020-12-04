@@ -7,8 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.lote;
-import model.bean.Destino;
+import projetobd.bean.lote;
+import projetobd.bean.Destino;
 
 /**
  *
@@ -46,7 +46,7 @@ public class loteDAO {
              stmt.setInt(1, lIdLote);
              stmt.setString(2, lFornecedor);
              stmt.setFloat(3, lValor);
-             stmt.setInt(4, lCNPJDestino);
+             stmt.setString(4, lCNPJDestino);
              stmt.execute();
              
              JOptionPane.showMessageDialog(null, "Comando executado com sucesso");
@@ -54,6 +54,7 @@ public class loteDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
 	
 	public ResultSet selecionar (){
@@ -102,7 +103,7 @@ public class loteDAO {
              objstmt.setInt(1, lIdLote);
              objstmt.setString(2, lFornecedor);
              objstmt.setFloat(3, lValor);
-             objstmt.setInt(4, lCNPJDestino);
+             objstmt.setString(4, lCNPJDestino);
              objstmt.execute();
 			 
             

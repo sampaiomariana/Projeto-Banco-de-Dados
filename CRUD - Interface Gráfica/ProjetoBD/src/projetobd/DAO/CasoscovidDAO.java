@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Casoscovid;
-import model.bean.Destino;
+import projetobd.bean.Casoscovid;
+
+
 /**
  *
  * @author sampa
@@ -24,11 +25,11 @@ public class CasoscovidDAO {
        
         ConectarBD objBD = new ConectarBD();
         
-        String lCNPJ = obj.getCNPJ();
-        int lQuantidadeInternados = obj.getQuantidadeInternados();
-        int lQuantidadeCurados = obj.getQuantidadeCurados();
+        
+        int lQuantidadeInternados = obj.getQuantidadedeInternados();
+        int lQuantidadeCurados = obj.getQuantidadedeCurados();
         int lQuantidadedeMortes = obj.getQuantidadedeMortes();
-		String lCNPJ_D = obj.getDestino().getCNPJ();
+	String lCNPJ_D = obj.getDestino().getCNPJ();
         
         objBD.conectar();
         
@@ -36,17 +37,17 @@ public class CasoscovidDAO {
         
         try {
             
-             String sql = ("INSERT INTO Casoscovid ( CNPJ, QuantidadeInternados,QuantidadeCurados,QuantidadedeMortes, CNPJ) VALUES  (?,?,?,?,?)");
+             String sql = ("INSERT INTO Casoscovid ( CNPJ, QuantidadedeInternados,QuantidadeCurados,QuantidadedeMortes) VALUES  (?,?,?,?)");
         
             
              PreparedStatement stmt = objBD.conexao.prepareStatement(sql);
 
              
-             stmt.setString(1, lCNPJ);
-             stmt.setInt(2, lQuantidadeInternados);
-             stmt.setInt(3, lQuantidadeCurados);
-             stmt.setInt(4, lQuantidadedeMortes);
-             stmt.setString(5, lCNPJ_D);
+           
+             stmt.setInt(1, lQuantidadeInternados);
+             stmt.setInt(2, lQuantidadeCurados);
+             stmt.setInt(3, lQuantidadedeMortes);
+             stmt.setString(4, lCNPJ_D);
              
              stmt.execute();
              
@@ -85,11 +86,11 @@ public class CasoscovidDAO {
          
           ConectarBD objBD = new ConectarBD();
 		
-		String lCNPJ = obj.getCNPJ();
-        int lQuantidadeInternados = obj.getQuantidadeInternados();
-        int lQuantidadeCurados = obj.getQuantidadeCurados();
+	String lCNPJ_D = obj.getDestino().getCNPJ();			
+        int lQuantidadeInternados = obj.getQuantidadedeInternados();
+        int lQuantidadeCurados = obj.getQuantidadedeCurados();
         int lQuantidadedeMortes = obj.getQuantidadedeMortes();
-		String lCNPJ_D = obj.getDestino().getCNPJ();		
+	
 		   
         
         objBD.conectar();
@@ -100,12 +101,12 @@ public class CasoscovidDAO {
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
               
-			 objstmt.setString(1, lCNPJ);
+            objstmt.setString(1, lCNPJ_D);
+          
              objstmt.setInt(2, lQuantidadeInternados);
              objstmt.setInt(3, lQuantidadeCurados);
              objstmt.setInt(4, lQuantidadedeMortes);
-             objstmt.setString(5, lCNPJ_D);
-          
+             
              
              objstmt.execute();
              
@@ -119,7 +120,7 @@ public class CasoscovidDAO {
     public void deletar (Casoscovid obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lCNPJ = obj.getCNPJ();
+        String lCNPJ = obj.getDestino().getCNPJ();
         objBD.conectar();
         try {
             
@@ -127,7 +128,7 @@ public class CasoscovidDAO {
         
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
-             objstmt.setInt(5, lCNPJ);
+             objstmt.setString(5, lCNPJ);
              
              objstmt.execute();
              

@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Item;
+import projetobd.bean.Item;
 
 /**
  *
@@ -133,7 +133,7 @@ public class ItemDAO {
         
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
-             objstmt.setInt(5, lIdItem);
+             objstmt.setInt(1, lIdItem);
              
              objstmt.execute();
              

@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Financiamento;
-import model.bean.Pesquisa;
+import projetobd.bean.Financiamento;
+import projetobd.bean.Pesquisa;
 /**
  *
  * @author sampa
@@ -57,9 +57,10 @@ public class FinanciamentoDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
 		
-		 public ResultSet selecionar (){
+        public ResultSet selecionar (){
         
         ConectarBD objBD = new ConectarBD();
       
@@ -99,7 +100,7 @@ public class FinanciamentoDAO {
             
             String sql = "UPDATE  Financiamento SET IdFinanciamento= ?, CPFouCNPJ= ?,PublicoouPrivado= ?, Valor = ?, IdPesquisa = ?  WHERE IdItem = ?" ;
         
-            
+            PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
 			  
              objstmt.setInt(1, lIdFinanciamento);
              objstmt.setString(2, lCPFouCNPJ);

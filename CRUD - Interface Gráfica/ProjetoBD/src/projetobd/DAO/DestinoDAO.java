@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.bean.Destino;
+import projetobd.bean.Destino;
 
 
 /**
@@ -136,7 +136,7 @@ public class DestinoDAO {
     public void deletar (Destino obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lCNPJ = obj.getCNPJ();
+        String lCNPJ = obj.getCNPJ();
         objBD.conectar();
         try {
             
@@ -144,7 +144,7 @@ public class DestinoDAO {
         
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
-             objstmt.setInt(6, lCNPJ);
+             objstmt.setString(6, lCNPJ);
              
              objstmt.execute();
              

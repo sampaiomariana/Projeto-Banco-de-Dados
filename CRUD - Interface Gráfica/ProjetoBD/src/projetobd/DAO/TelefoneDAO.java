@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Telefone;
-import model.bean.Localidade;
+import projetobd.bean.Telefone;
+import projetobd.bean.Localidade;
 /**
  *
  * @author sampa
@@ -24,7 +24,7 @@ public class TelefoneDAO {
        
         ConectarBD objBD = new ConectarBD();
         
-		String lCNPJLocalidade = obj.getLocalidade.getCNPJ();
+	String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
         String lNumeroTelefone = obj.getNumeroTelefone();
         
         objBD.conectar();
@@ -48,6 +48,7 @@ public class TelefoneDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
 		
 		  
@@ -80,7 +81,7 @@ public class TelefoneDAO {
           ConectarBD objBD = new ConectarBD();
           
       
-		String lCNPJLocalidade = obj.getLocalidade.getCNPJ();
+	String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
         String lNumeroTelefone = obj.getNumeroTelefone();
         
         objBD.conectar();
@@ -106,7 +107,7 @@ public class TelefoneDAO {
     public void deletar (Telefone obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lCNPJLocalidade = obj.getCNPJ();
+        String lCNPJLocalidade = obj.getLocalidade().getCNPJ();
         objBD.conectar();
         try {
             
@@ -114,7 +115,7 @@ public class TelefoneDAO {
         
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
-             objstmt.setInt(2, lCNPJLocalidade);
+             objstmt.setString(2, lCNPJLocalidade);
              
              objstmt.execute();
              

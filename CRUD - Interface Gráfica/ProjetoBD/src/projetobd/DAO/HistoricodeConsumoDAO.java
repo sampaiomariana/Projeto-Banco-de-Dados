@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Item;
-import model.bean.Destino;
-import model.bean.HistoricodeConsumo;
+import projetobd.bean.Item;
+import projetobd.bean.Destino;
+import projetobd.bean.HistoricodeConsumo;
 
 /**
  *
@@ -51,8 +51,9 @@ public class HistoricodeConsumoDAO {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Erro na execução do insert"+ex.getMessage());
         }
+    }
 		
-		public ResultSet selecionar (){
+	public ResultSet selecionar (){
         
         ConectarBD objBD = new ConectarBD();
       
@@ -112,7 +113,7 @@ public class HistoricodeConsumoDAO {
     public void deletar (HistoricodeConsumo obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lCNPJDestino = obj.getCNPJ();
+       String lCNPJDestino = obj.getDestino().getCNPJ();
         objBD.conectar();
         try {
             
@@ -120,7 +121,7 @@ public class HistoricodeConsumoDAO {
         
              PreparedStatement  objstmt = objBD.conexao.prepareStatement(sql);
             
-             objstmt.setInt(4, lCNPJDestino);
+             objstmt.setString(4, lCNPJDestino);
              
              objstmt.execute();
              

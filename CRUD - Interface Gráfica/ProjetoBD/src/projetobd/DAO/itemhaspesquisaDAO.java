@@ -6,11 +6,12 @@
 package projetobd.DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.bean.Item;
-import model.bean.Pesquisa;
-import model.bean.Itemhaspesquisa;
+import projetobd.bean.Item;
+import projetobd.bean.Pesquisa;
+import projetobd.bean.Itemhaspesquisa;
 import projetobd.connection.ConectarBD;
 
 /**
@@ -81,7 +82,7 @@ public class itemhaspesquisaDAO {
     }
 
     
-   public void atualizar (itemhaspesquisa obj){
+   public void atualizar (Itemhaspesquisa obj){
          
           ConectarBD objBD = new ConectarBD();
       
@@ -112,10 +113,10 @@ public class itemhaspesquisaDAO {
         }
     }
 
-    public void deletar (itemhaspesquisa obj){  
+    public void deletar (Itemhaspesquisa obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lIdItem = obj.getIdItem();
+        int lIdItem = obj.getItem().getIdItem();
         objBD.conectar();
         try {
             

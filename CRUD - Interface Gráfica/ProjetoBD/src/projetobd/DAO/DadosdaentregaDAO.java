@@ -5,9 +5,10 @@ import projetobd.connection.ConectarBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
-import model.bean.lote;
-import model.bean.Dadosdaentrega;
+import projetobd.bean.lote;
+import projetobd.bean.Dadosdaentrega;
 
 /**
  *
@@ -27,10 +28,10 @@ public class DadosdaentregaDAO {
        
         ConectarBD objBD = new ConectarBD();
         
-        int lIdLote = obj.getLote().getIDlote();
+        int lIdLote = obj.getLote().getIdLote();
         String lStatusLote = obj.getStatusLote();
         Date lDatadeSolicitacao = obj.getDatadeSolicitacao();
-        Date lDatadeEntrega = obj.getDatadeEntrega();
+        Date lDatadeEntrega = obj.getDatadeEntegra();
         
         objBD.conectar();
         
@@ -46,8 +47,8 @@ public class DadosdaentregaDAO {
              
              stmt.setInt(1, lIdLote);
              stmt.setString(2, lStatusLote);
-             stmt.setString(3, lDatadeSolicitacao);
-             stmt.setInt(4, lDatadeEntrega);
+             stmt.setDate(3, (java.sql.Date) lDatadeSolicitacao);
+             stmt.setDate(4, (java.sql.Date) lDatadeEntrega);
              
              
              stmt.execute();
@@ -88,10 +89,10 @@ public class DadosdaentregaDAO {
           ConectarBD objBD = new ConectarBD();
           
            
-        int lIdLote = obj.getLote().getIDlote();
+        int lIdLote = obj.getLote().getIdLote();
         String lStatusLote = obj.getStatusLote();
         Date lDatadeSolicitacao = obj.getDatadeSolicitacao();
-        Date lDatadeEntrega = obj.getDatadeEntrega();
+        Date lDatadeEntrega = obj.getDatadeEntegra();
         
         objBD.conectar();
      try {
@@ -104,8 +105,8 @@ public class DadosdaentregaDAO {
 			    
              objstmt.setInt(1, lIdLote);
              objstmt.setString(2, lStatusLote);
-             objstmt.setString(3, lDatadeSolicitacao);
-             objstmt.setInt(4, lDatadeEntrega);
+             objstmt.setDate(3, (java.sql.Date) lDatadeSolicitacao);
+             objstmt.setDate(4, (java.sql.Date) lDatadeEntrega);
             
              
              objstmt.execute();
@@ -120,7 +121,7 @@ public class DadosdaentregaDAO {
     public void deletar (Dadosdaentrega obj){  
         ConectarBD objBD = new ConectarBD();
       
-        int lIdLote = obj.getIdLote();
+        int lIdLote = obj.getLote().getIdLote();
         objBD.conectar();
         try {
             
